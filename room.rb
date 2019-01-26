@@ -24,8 +24,16 @@ class Room
     end
   end
 
+  def create_playlist(*songs)
+    @playlist = songs
+  end
 
+  def get_playlist_duration
+    @playlist.reduce(0) { |acc, song| acc + song.duration() }
 
+# reduced_nums = numbers.reduce(0) { |acc, number| acc + number }
+
+  end
 
 
 end

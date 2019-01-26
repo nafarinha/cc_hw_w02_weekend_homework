@@ -25,6 +25,8 @@ class TestRoom < Minitest::Test
     @song_10 = Song.new("Lynyrd Skynyrd", "Sweet Home Alabama", 283, "Rock", "Big wheels keep on turning \nCarry me home to see my kin")
     @song_11 = Song.new("Gloria Gaynor", "I Will Survive", 197, "R&B", "At first I was afraid, I was petrified \nKept thinkin' I could never live without you by my side")
 
+
+    @playlist_1 = [@song_1, @song_2, @song_3]
     # @playlist_1 = {
     #   songs: [@song_1, @song_2, @song_3],
     #   total_time: 268 + 289 + 168
@@ -37,7 +39,6 @@ class TestRoom < Minitest::Test
     @guest_list_2 = [@guest_5, @guest_4, @guest_3, @guest_2]
     @guest_list_3 = [@guest_2, @guest_4, @guest_1, @guest_3, @guest_5]
 
-#p.p.p.h. = gbp5, min 1 hour
     @room_1 = Room.new("Ibanez")
     @room_2 = Room.new("Gibson")
     @room_3 = Room.new("Fender")
@@ -49,9 +50,17 @@ class TestRoom < Minitest::Test
     assert_equal(3, @room_1.max_capacity)
   end
 
+  def test_create_playlist
+    @room_2.create_playlist(@song_1, @song_2, @song_3)
+    assert_equal( 3, @room_2.playlist.length() )
+  end
 
+  def test_get_playlist_duration
+    @room_2.create_playlist(@song_1, @song_2, @song_3)
+    assert_equal(725, @room_2.get_playlist_duration())
+  end
 
-
+#p.p.p.h. = gbp5, min 1 hour
 
 
 
