@@ -27,5 +27,9 @@ class TestGuest < MiniTest::Test
     assert_equal(80, @guest_3.wallet())
   end
 
+  def test_set_favourite_song
+    assert_equal(@song_1, @guest_4.favourite_song = @song_1)
+  end
+
 
 end
