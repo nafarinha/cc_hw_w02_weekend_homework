@@ -15,9 +15,7 @@ class TestSong < MiniTest::Test
     @song_6 = Song.new("Shania Twain", "Man! I Feel Like a Woman!", 233, "Country", "I'm going out tonight \nI'm feelin' alright")
     @song_7 = Song.new("Frank Sinatra", "My Way", 276, "Jazz", "And now, the end is near \nAnd so I face the final curtain")
     @song_8 = Song.new("Oasis", "Wonderwall", 258, "Rock", "Today is gonna be the day that they're gonna throw it back to you")
-
     @song_9 = Song.new("Oasis", "Don't Look Back In Anger", 287, "Rock", "Slip inside the eye of your mind \nDon't you know you might find")
-
     @song_10 = Song.new("Lynyrd Skynyrd", "Sweet Home Alabama", 283, "Rock", "Big wheels keep on turning \nCarry me home to see my kin")
     @song_11 = Song.new("Gloria Gaynor", "I Will Survive", 0, "R&B", "At first I was afraid, I was petrified \nKept thinkin' I could never live without you by my side")
   end
@@ -39,7 +37,6 @@ class TestSong < MiniTest::Test
   end
 
   def test_get_lyrics
-
     assert_equal("Where it began \nI can't begin to knowin'", @song_5.lyrics())
   end
 

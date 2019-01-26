@@ -9,12 +9,11 @@ class Song
     @duration = duration
     @genre = genre
     @lyrics = lyrics
-
-
-
   end
 
+  def get_all_songs_by_artist()
 
+  end
 
 
 
