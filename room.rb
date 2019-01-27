@@ -29,6 +29,19 @@ class Room
     @playlist.push(*songs).flatten!
   end
 
+
+  # def remove_songs_from_playlist(songs)
+  #   @playlist.delete(songs)
+  # end
+
+  def remove_songs_from_playlist(*songs)
+    songs_to_remove = []
+    songs_to_remove.push(*songs).flatten!
+    songs_to_remove.each do |song_to_remove|
+      @playlist.delete_if { |song| song == song_to_remove }
+    end
+  end
+
   def get_playlist_duration
     @playlist.reduce(0) { |acc, song| acc + song.duration() }
   end

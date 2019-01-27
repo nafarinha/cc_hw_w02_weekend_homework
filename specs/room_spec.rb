@@ -27,6 +27,7 @@ class TestRoom < Minitest::Test
 
 
     @playlist_1 = [@song_1, @song_2, @song_3]
+    @playlist_2 = [@song_4, @song_5, @song_6, @song_7]
 
     # @playlist_2 = {
     #   songs: [@song_1, @song_2, @song_3],
@@ -56,16 +57,39 @@ class TestRoom < Minitest::Test
     assert_equal( 2, @room_2.playlist.length() )
   end
 
-  def test_add_songs_to_playlist__add_collection
+  def test_add_songs_to_playlist__add_collection_1
     @room_3.add_songs_to_playlist(@playlist_1)
     assert_equal(3, @room_3.playlist.length())
+  end
+
+  def test_add_songs_to_playlist__add_collection_2
+    @room_3.add_songs_to_playlist(@playlist_1)
+    @room_3.add_songs_to_playlist(@playlist_2)
+    assert_equal(7, @room_3.playlist.length())
+  end
+
+  def test_remove_songs_from_playlist__individually
+    @room_1.add_songs_to_playlist(@playlist_1)
+    @room_1.remove_songs_from_playlist(@song_1)
+    assert_equal(2, @room_1.playlist.length())
+  end
+
+  def test_remove_songs_from_playlist__collection_1
+    @room_1.add_songs_to_playlist(@playlist_1)
+    @room_1.remove_songs_from_playlist(@song_1, @song_2)
+    assert_equal(1, @room_1.playlist.length())
+  end
+
+  def test_remove_songs_from_playlist__collection_2
+    @room_1.add_songs_to_playlist(@playlist_1, @playlist_2)
+    @room_1.remove_songs_from_playlist(@playlist_1)
+    assert_equal(4, @room_1.playlist.length())
   end
 
   def test_get_playlist_duration
     @room_2.add_songs_to_playlist(@song_1, @song_2, @song_3)
     assert_equal(725, @room_2.get_playlist_duration())
   end
-
 
   def test_check_in__success
     @room_1.check_in(@guest_list_1)
