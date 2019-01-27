@@ -32,7 +32,7 @@ class Room
     @playlist.reduce(0) { |acc, song| acc + song.duration() }
   end
 
-  def add_guests(new_guests)
+  def check_in(new_guests)
     set_max_capacity()
     @max_capacity > @guest_list.count() ? @guest_list.push(*new_guests) : "Room #{@name} is full"
   end

@@ -61,22 +61,23 @@ class TestRoom < Minitest::Test
   end
 
 
-  def test_add_guests__success
-    @room_1.add_guests(@guest_list_1)
+  def test_check_in__success
+    @room_1.check_in(@guest_list_1)
     assert_equal(@guest_list_1, @room_1.guest_list())
   end
 
-  def test_add_guests__additional_single_guest
-    @room_2.add_guests(@guest_list_1)
-    @room_2.add_guests(@guest_4)
+  def test_check_in__additional_single_guest
+    @room_2.check_in(@guest_list_1)
+    @room_2.check_in(@guest_4)
     assert_equal(4, @room_2.guest_list.count())
   end
 
-  def test_add_guests__maxed_capacity
-    @room_1.add_guests(@guest_list_1)
-    assert_equal("Room #{@room_1.name()} is full", @room_1.add_guests(@guest_4))
-
+  def test_check_in__maxed_capacity
+    @room_1.check_in(@guest_list_1)
+    assert_equal("Room #{@room_1.name()} is full", @room_1.check_in(@guest_4))
   end
+
+  # def test_check_out
 #p.p.p.h. = 30, min 1 hour
 # entry fee based on max number of guest. Can be less (if someone decides to leave earlier) but to have more guests than initially checked in fee needs to be recalculated
   # def test_calculate_entry_fee
