@@ -9,7 +9,7 @@ class Room
     @name = name
     @guest_list = []
     @entry_fee = 0
-    @playlist = Array.new()
+    @playlist = []
     @max_capacity = 0
 
   end
@@ -29,11 +29,6 @@ class Room
     @playlist.push(*songs).flatten!
   end
 
-
-  # def remove_songs_from_playlist(songs)
-  #   @playlist.delete(songs)
-  # end
-
   def remove_songs_from_playlist(*songs)
     songs_to_remove = []
     songs_to_remove.push(*songs).flatten!
@@ -46,6 +41,7 @@ class Room
     @playlist.reduce(0) { |acc, song| acc + song.duration() }
   end
 
+#The set_max_capacity() call on check_in method completes the first Extension
   def check_in(guests)
     set_max_capacity()
     @max_capacity > @guest_list.count() ? @guest_list.push(*guests) : "Room #{@name} is full"
@@ -58,7 +54,11 @@ class Room
     end
   end
 
+#EXTENSIONS
 
+  def available_space
+    @max_capacity - @guest_list.size()
+  end
 
 
 end

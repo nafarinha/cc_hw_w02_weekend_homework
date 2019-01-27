@@ -119,15 +119,10 @@ class TestRoom < Minitest::Test
     assert_equal(1, @room_1.guest_list.count())
   end
 
-  # def test_check_out
-#p.p.p.h. = 30, min 1 hour
-# entry fee based on max number of guest. Can be less (if someone decides to leave earlier) but to have more guests than initially checked in fee needs to be recalculated
-  # def test_calculate_entry_fee
-  # price_per_person = 20
-  #
-  # assert_equal(price_per_person * @guest_list_1.count(), @room_1.calculate_entry_fee())
-  # end
-
+  def test_available_space
+    @room_3.check_in(@guest_list_1)
+    assert_equal(2, @room_3.available_space())
+  end
 
 
 end
