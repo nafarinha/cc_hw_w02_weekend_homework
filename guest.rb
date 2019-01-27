@@ -11,4 +11,16 @@ class Guest
     @favourite_song = String.new()
   end
 
+
+#ADVANCED EXTENSIONS
+
+  def cheer_favourite_song(playlist)
+
+    found_favourite_song = playlist.find { |song| song == @favourite_song }
+
+    "Whoo, Whooo!I love #{found_favourite_song.artist}!" if !found_favourite_song.nil? && found_favourite_song == @favourite_song
+
+  end
+
+
 end
