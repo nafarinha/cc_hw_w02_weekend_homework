@@ -30,10 +30,11 @@ class Room
 
   def get_playlist_duration
     @playlist.reduce(0) { |acc, song| acc + song.duration() }
-
-# reduced_nums = numbers.reduce(0) { |acc, number| acc + number }
-
   end
 
+  def add_guests(new_guests)
+    set_max_capacity()
+    @max_capacity > @guest_list.count() ? @guest_list.push(*new_guests) : "Room #{@name} is full"
+  end
 
 end

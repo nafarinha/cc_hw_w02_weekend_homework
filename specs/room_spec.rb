@@ -26,7 +26,7 @@ class TestRoom < Minitest::Test
     @song_11 = Song.new("Gloria Gaynor", "I Will Survive", 197, "R&B", "At first I was afraid, I was petrified \nKept thinkin' I could never live without you by my side")
 
 
-    @playlist_1 = [@song_1, @song_2, @song_3]
+    #@playlist_1 = [@song_1, @song_2, @song_3]
     # @playlist_1 = {
     #   songs: [@song_1, @song_2, @song_3],
     #   total_time: 268 + 289 + 168
@@ -60,8 +60,30 @@ class TestRoom < Minitest::Test
     assert_equal(725, @room_2.get_playlist_duration())
   end
 
-#p.p.p.h. = gbp5, min 1 hour
 
+  def test_add_guests__success
+    @room_1.add_guests(@guest_list_1)
+    assert_equal(@guest_list_1, @room_1.guest_list())
+  end
+
+  def test_add_guests__additional_single_guest
+    @room_2.add_guests(@guest_list_1)
+    @room_2.add_guests(@guest_4)
+    assert_equal(4, @room_2.guest_list.count())
+  end
+
+  def test_add_guests__maxed_capacity
+    @room_1.add_guests(@guest_list_1)
+    assert_equal("Room #{@room_1.name()} is full", @room_1.add_guests(@guest_4))
+
+  end
+#p.p.p.h. = 30, min 1 hour
+# entry fee based on max number of guest. Can be less (if someone decides to leave earlier) but to have more guests than initially checked in fee needs to be recalculated
+  # def test_calculate_entry_fee
+  # price_per_person = 20
+  #
+  # assert_equal(price_per_person * @guest_list_1.count(), @room_1.calculate_entry_fee())
+  # end
 
 
 
