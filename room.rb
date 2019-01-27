@@ -39,9 +39,9 @@ class Room
   end
 
   def check_out(*guests)
-    departing_guests = [*guests]
-    departing_guests.each do |departing_guest|
-      @guest_list.delete_if { |guest| guest == departing_guest }
+    leaving_guests = [*guests]
+    leaving_guests.each do |leaving_guest|
+      @guest_list.delete_if { |guest| guest == leaving_guest }
     end
   end
 
