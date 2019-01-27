@@ -77,6 +77,18 @@ class TestRoom < Minitest::Test
     assert_equal("Room #{@room_1.name()} is full", @room_1.check_in(@guest_4))
   end
 
+  def test_check_out__single_guest
+    @room_1.check_in(@guest_list_1)
+    @room_1.check_out(@guest_2)
+    assert_equal(2, @room_1.guest_list.count())
+  end
+
+  def test_check_out__multiple_guests
+    @room_1.check_in(@guest_list_1)
+    @room_1.check_out(@guest_2, @guest_3)
+    assert_equal(1, @room_1.guest_list.count())
+  end
+
   # def test_check_out
 #p.p.p.h. = 30, min 1 hour
 # entry fee based on max number of guest. Can be less (if someone decides to leave earlier) but to have more guests than initially checked in fee needs to be recalculated

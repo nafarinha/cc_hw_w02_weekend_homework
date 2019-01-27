@@ -1,3 +1,4 @@
+require("pry")
 class Room
 
   attr_reader :name, :max_capacity, :entry_fee
@@ -36,5 +37,15 @@ class Room
     set_max_capacity()
     @max_capacity > @guest_list.count() ? @guest_list.push(*new_guests) : "Room #{@name} is full"
   end
+
+  def check_out(*guests)
+    departing_guests = [*guests]
+    departing_guests.each do |departing_guest|
+      @guest_list.delete_if { |guest| guest == departing_guest }
+    end
+  end
+
+
+
 
 end
