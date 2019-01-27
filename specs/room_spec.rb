@@ -124,5 +124,9 @@ class TestRoom < Minitest::Test
     assert_equal(2, @room_3.available_space())
   end
 
+  def test_calculate_entry_fee
+    @room_2.check_in(@guest_list_2)
+    assert_equal(40, @room_2.calculate_entry_fee(10))
+  end
 
 end

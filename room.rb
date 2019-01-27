@@ -60,5 +60,9 @@ class Room
     @max_capacity - @guest_list.size()
   end
 
+#entry fee is calculated based on room's max capacity times a price per person price. Will not change if guests arrive later or leave earlier
+  def calculate_entry_fee(price_per_person)
+    @max_capacity * price_per_person
+  end
 
 end
