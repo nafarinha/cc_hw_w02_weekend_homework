@@ -26,8 +26,9 @@ class TestRoom < Minitest::Test
     @song_11 = Song.new("Gloria Gaynor", "I Will Survive", 197, "R&B", "At first I was afraid, I was petrified \nKept thinkin' I could never live without you by my side")
 
 
-    #@playlist_1 = [@song_1, @song_2, @song_3]
-    # @playlist_1 = {
+    @playlist_1 = [@song_1, @song_2, @song_3]
+
+    # @playlist_2 = {
     #   songs: [@song_1, @song_2, @song_3],
     #   total_time: 268 + 289 + 168
     # }
@@ -50,13 +51,18 @@ class TestRoom < Minitest::Test
     assert_equal(3, @room_1.max_capacity)
   end
 
-  def test_create_playlist
-    @room_2.create_playlist(@song_1, @song_2, @song_3)
-    assert_equal( 3, @room_2.playlist.length() )
+  def test_add_songs_to_playlist__add_individually
+    @room_2.add_songs_to_playlist(@song_1, @song_2)
+    assert_equal( 2, @room_2.playlist.length() )
+  end
+
+  def test_add_songs_to_playlist__add_collection
+    @room_3.add_songs_to_playlist(@playlist_1)
+    assert_equal(3, @room_3.playlist.length())
   end
 
   def test_get_playlist_duration
-    @room_2.create_playlist(@song_1, @song_2, @song_3)
+    @room_2.add_songs_to_playlist(@song_1, @song_2, @song_3)
     assert_equal(725, @room_2.get_playlist_duration())
   end
 
